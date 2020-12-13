@@ -1,5 +1,7 @@
 package main
 
+import "fmt"
+
 // storage of factorials
 var FACT = map[int]int{0: 1}
 
@@ -9,7 +11,14 @@ var PART = map[int][][]int{
 	1: {[]int{1}},
 }
 
+func main() {
+	fmt.Println(Relationship(4))
+}
+
 func Relationship(n int) int {
+	if n == 0 {
+		return 1
+	}
 	factorial(n)
 	p := partition(n)
 	res := 0
@@ -17,15 +26,18 @@ func Relationship(n int) int {
 		prod := 1
 		t := n
 		// fmt.Println(v)
+		uniq := make(map[int]int)
 		for _, k := range v {
-			if k == 1 {
-				break
-			}
+			uniq[k]++
 			cnk := FACT[t] / (FACT[k] * FACT[t-k])
 			prod *= cnk
 			t -= k
 		}
 		prod *= FACT[len(v)]
+		// fmt.Println(i, v, uniq, prod)
+		for _, v := range uniq {
+			prod /= FACT[v]
+		}
 		// fmt.Println(prod)
 		res += prod
 	}
