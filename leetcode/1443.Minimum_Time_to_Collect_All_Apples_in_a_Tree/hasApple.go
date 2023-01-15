@@ -63,9 +63,8 @@ func minTimeDFS(n int, edges [][]int, hasApple []bool) int {
 	graph := make([][]int, n)
 
 	for _, e := range edges {
-		u, v := e[0], e[1]
-		graph[u] = append(graph[u], v)
-		graph[v] = append(graph[v], u)
+		graph[e[0]] = append(graph[e[0]], e[1])
+		graph[e[1]] = append(graph[e[1]], e[0])
 	}
 
 	time := make([]int, n)
