@@ -16,7 +16,6 @@ func minFlipsMonoIncr(s string) int {
 	if min > ln-total {
 		min = ln - total
 	}
-	//fmt.Println(min)
 
 	for i := range s {
 		if s[i] == '1' {
@@ -24,13 +23,14 @@ func minFlipsMonoIncr(s string) int {
 		}
 
 		tmp := ln + 2*count - (i + 1 + total)
-		//fmt.Println(i, count, tmp)
 		if tmp <= min {
 			min = tmp
 		}
 
-		if min == 0 {
-			return 0
+		// min == 0, "000 111111"
+		// count == total "001101011 000000000"
+		if min == 0 || count == total {
+			return min
 		}
 	}
 
