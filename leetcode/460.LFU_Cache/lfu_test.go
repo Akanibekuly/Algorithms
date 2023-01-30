@@ -102,12 +102,12 @@ func TestLFUCache(t *testing.T) {
 				tt.FailNow()
 			}
 
-			var l LFUCache
+			var l LFUCachef
 			for j := range c.cmd {
 				switch c.cmd[j] {
 				case "LFUCache":
 					require.Equal(tt, len(c.args[j]), 1, "case: %d cmd: %d", i+1, j+1)
-					l = Constructor(c.args[j][0])
+					l = *Constructorf(c.args[j][0])
 				case "put":
 					require.Equal(tt, len(c.args[j]), 2, "case: %d cmd: %d", i+1, j+1)
 					// t.Logf("Put key [%d] value [%d]", c.args[j][0], c.args[j][1])
