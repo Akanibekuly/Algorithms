@@ -19,6 +19,7 @@ func TestSingleDuplicate(t *testing.T) {
 	for i, c := range cases {
 		t.Run(fmt.Sprintf("case %d", i), func(tt *testing.T) {
 			assert.Equal(tt, c.res, singleNonDuplicate(c.nums))
+			assert.Equal(tt, c.res, singleNonDuplicate2(c.nums))
 		})
 	}
 }
