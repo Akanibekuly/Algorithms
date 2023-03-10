@@ -40,7 +40,7 @@ func kthLargestLevelSum(root *TreeNode, k int) int64 {
 		return sums[i] < sums[j]
 	})
 
-	if k < len(sums) {
+	if k <= len(sums) {
 		return sums[len(sums)-k]
 	}
 
