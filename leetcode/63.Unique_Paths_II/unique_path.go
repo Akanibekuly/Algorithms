@@ -4,6 +4,7 @@ func uniquePathsWithObstacles(dp [][]int) int {
 	if dp[0][0] == 1 {
 		return 0
 	}
+	
 	dp[0][0] = 1
 	for i := range dp {
 		for j := range dp[i] {
