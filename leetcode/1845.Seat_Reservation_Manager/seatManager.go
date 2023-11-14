@@ -37,7 +37,7 @@ func Constructor(n int) SeatManager {
 
 func (s *SeatManager) Reserve() int {
 	if s.hq.Len() > 0 {
-		return s.hq.Pop().(int)
+		return heap.Pop(&s.hq).(int)
 	}
 	s.idx++
 	return s.idx
